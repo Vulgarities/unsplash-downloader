@@ -11,9 +11,9 @@ class testClass:
         url='https://img.ivsky.com/img/tupian/t/201008/05/bianxingjingang-001.jpg'
 
         re=requests.get(url,headers=headers)
-        print(re.status_code)#查看请求状态，返回200说明正常
-
-        path='./test.jpg'#文件储存地址
-        with open(path, 'wb') as f:#把图片数据写入本地，wb表示二进制储存
-            for chunk in re.iter_content(chunk_size=256):
-                f.write(chunk)
+        if(re.status_code==200):
+            path='./image/test.jpg'#文件储存地址(相对于main.py)
+            with open(path, 'wb') as f:#把图片数据写入本地，wb表示二进制储存
+                for chunk in re.iter_content(chunk_size=16):
+                    f.write(chunk)
+            print("success")
